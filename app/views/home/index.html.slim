@@ -1,4 +1,13 @@
-- if logged_in?
-  = link_to 'ログアウト', logout_path
-- else
+- unless logged_in?
   = link_to 'ログイン', '/auth/twitter'
+- else
+  = link_to 'ログアウト', logout_path
+
+  = form_with model: Post.new, url: home_index_path do |f|
+    = f.text_field :title
+    = f.text_field :content
+    = f.submit "送信"
+
+ul
+- @posts.each do |post|
+  li = post.title

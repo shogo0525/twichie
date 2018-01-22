@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :authorizations
+  has_many :posts
 
   def self.create_from_auth!(auth)
     self.create!(

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180119090922) do
+ActiveRecord::Schema.define(version: 20180122043854) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,15 @@ ActiveRecord::Schema.define(version: 20180119090922) do
     t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid", unique: true
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "nickname"
@@ -31,4 +40,5 @@ ActiveRecord::Schema.define(version: 20180119090922) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "posts", "users"
 end
