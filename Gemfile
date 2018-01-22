@@ -62,3 +62,9 @@ gem 'omniauth-twitter'
 
 # slim
 gem 'slim-rails'
+
+# twitter
+gem 'twitter'
+
+# dotenv
+gem 'dotenv-rails'
