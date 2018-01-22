@@ -1,3 +1,18 @@
 h2 = @post.title
 
 div = simple_format(@post.content)
+
+= form_with model: [ @post, Comment.new ], url: comments_path do |f|
+  = f.hidden_field :post_id, value: @post.id
+  = f.text_area :content
+  br
+  = f.submit "送信"
+
+
+ul
+- @comments.each do |comment|
+  li
+    p
+    = comment.user.nickname
+    br
+    = comment.content

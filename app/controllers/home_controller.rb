@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     end
 
     # tweet
-    client.update("@shogo0525 tweet from my app")
+    #client.update("@shogo0525 tweet from my app")
     redirect_to root_path
   end
 

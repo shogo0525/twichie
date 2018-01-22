@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :sessions, only: %i(create destroy)
   resources :home
   resources :posts, only: %i(show)
+  resources :comments, only: %i(create)
 
   get '/auth/:provider/callback', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
