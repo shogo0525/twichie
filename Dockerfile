@@ -1,5 +1,7 @@
 FROM ruby:2.5.0
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+
+RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && apt-get install -y nodejs
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 
 # yarn
 RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
@@ -13,8 +15,8 @@ COPY Gemfile /twichie/Gemfile
 COPY Gemfile.lock /twichie/Gemfile.lock
 RUN bundle install
 
-ADD package.json ${APP_DIR}/package.json
-ADD yarn.lock ${APP_DIR}/yarn.lock
+ADD package.json /twichie/package.json
+ADD yarn.lock /twichie/yarn.lock
 RUN yarn install
 
 COPY . /twichie

@@ -68,3 +68,5 @@ gem 'twitter'
 
 # dotenv
 gem 'dotenv-rails'
+
+gem 'webpacker'
